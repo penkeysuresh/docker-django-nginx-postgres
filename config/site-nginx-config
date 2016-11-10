@@ -1,0 +1,22 @@
+upstream djangoproject {
+    server 127.0.0.1:5050; # for a web port socket (we'll use this first)
+}
+
+server {
+    listen 80 default_server;
+    #listen [::]:80 default_server;
+    server_name _;
+
+
+    location / {
+           uwsgi_pass djangoproject;
+           include     /etc/nginx/uwsgi_params; # the uwsgi_params file you installed
+    }
+
+    # path to django project static files for admin
+    location /static {    
+        autoindex on;    
+        alias /home/code/mysite/static;
+    }
+
+}

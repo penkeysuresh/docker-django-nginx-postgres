@@ -1,0 +1,9 @@
+.idea
+.DS_Store
+*.pyc
+static
+media
+*.dump
+*.rdb
+*.log
+logfile

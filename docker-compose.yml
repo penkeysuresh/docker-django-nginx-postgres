@@ -1,0 +1,13 @@
+
+web:
+  build: .
+  ports:
+   - 80:80
+  volumes:
+   - <-- absolute-path-to-folder-->/docker-django-nginx-postgres/mysite:/home/code
+  links:
+   - database:postgres
+database:
+  image: postgres
+  volumes:
+   - postgres-data:/var/lib/postgresql/data
